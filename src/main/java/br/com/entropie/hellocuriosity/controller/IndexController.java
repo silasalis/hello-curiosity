@@ -8,6 +8,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
 import br.com.entropie.hellocuriosity.News;
 import br.com.entropie.hellocuriosity.Timeline;
+import br.com.entropie.hellocuriosity.rss.CategoryFilter;
 import br.com.entropie.hellocuriosity.rss.RssReader;
 
 @Resource
@@ -23,7 +24,7 @@ public class IndexController {
 
 	@Get("/")
 	public void index() {
-		List<News> news = this.rssReader.defaultFeed().lastNews();
+		List<News> news = this.rssReader.defaultFeed().lastNews(new CategoryFilter());
 		Timeline timeline = new Timeline(news);
 		result.use(Results.json()).from(timeline).recursive().serialize();
 	}

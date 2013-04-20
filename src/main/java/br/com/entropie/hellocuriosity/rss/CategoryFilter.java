@@ -16,15 +16,15 @@ public class CategoryFilter implements NewsFilter {
 		
 		for (News news : newsList){
 			if (containsCategory(news))
-					filtredNews.add(news);
+				filtredNews.add(news);
 		}
 		
-		return null;
+		return filtredNews;
 	}
 	private boolean containsCategory(News news) {
 		
 		for (String category : news.getCategories()){
-			if (categories.contains(category)){
+			if (categories.contains(category.toLowerCase())){
 				return true;
 			}
 		}
