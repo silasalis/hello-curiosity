@@ -41,7 +41,10 @@ public class RssReader {
 		}
 		
 		return new RssReader(feed);
-
+	}
+	
+	public List<News> lastNews(NewsFilter newsSelector) {
+		return  newsSelector.filterFrom(lastNews());
 	}
 	
 	public List<News> lastNews() {
@@ -55,7 +58,6 @@ public class RssReader {
 		}
 
 		return news;
-
 	}
 	
 	private static void closeQuietly(Closeable closeable) {
