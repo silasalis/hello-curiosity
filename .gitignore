@@ -1,6 +1,13 @@
-*.class
+!.gitignore
+target
+bin
 
-# Package Files #
-*.jar
-*.war
-*.ear
+*.class
+*~
+.project
+.classpath
+.settings/*/*
+.settings
+.DS_Store
+*.log
+
