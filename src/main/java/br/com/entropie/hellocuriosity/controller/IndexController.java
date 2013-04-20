@@ -29,6 +29,6 @@ public class IndexController {
 	public void timeline() {
 		List<News> news = this.rssReader.defaultFeed().lastNews();
 		Timeline timeline = new Timeline(news);
-		result.use(Results.json()).from(timeline).recursive().serialize();
+		this.result.use(Results.json()).from(timeline).recursive().serialize();
 	}
 }
