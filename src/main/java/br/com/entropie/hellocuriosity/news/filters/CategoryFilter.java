@@ -9,7 +9,7 @@ import br.com.entropie.hellocuriosity.news.News;
 public class CategoryFilter implements NewsFilter {
 
 	//Press Releases    Feature Stories    Spotlights    Status Reports  
-	private final static ArrayList<String> categories = new ArrayList<String>(Arrays.asList("status reports","sporlights", "feature stories"));
+	private final static ArrayList<String> categories = new ArrayList<String>(Arrays.asList("status report","spotlights", "feature"));
 	
 	public List<News> filterFrom(List<News> newsList) {
 		List<News> filtredNews = new ArrayList<News>();

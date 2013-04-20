@@ -35,13 +35,12 @@ public class RssReader {
 		try {
 			reader = new XmlReader(new URL(root));
 			feed = new SyndFeedInput().build(reader);
+			return new RssReader(feed);
 			
 		} catch (Exception e) {
 			closeQuietly(reader);
 			throw new HelloCuriosityException("Error building your feed, sorry =(", e);
 		}
-		
-		return new RssReader(feed);
 	}
 	
 	public List<News> lastNews(NewsFilter newsSelector) {
