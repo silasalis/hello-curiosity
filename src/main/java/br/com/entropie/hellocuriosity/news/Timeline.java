@@ -2,6 +2,8 @@ package br.com.entropie.hellocuriosity.news;
 
 import java.util.List;
 
+import br.com.entropie.hellocuriosity.news.Asset;
+import br.com.entropie.hellocuriosity.news.News;
 
 public class Timeline {
 
