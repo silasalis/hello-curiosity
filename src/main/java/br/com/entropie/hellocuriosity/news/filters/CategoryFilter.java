@@ -1,10 +1,10 @@
-package br.com.entropie.hellocuriosity.rss;
+package br.com.entropie.hellocuriosity.news.filters;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import br.com.entropie.hellocuriosity.News;
+import br.com.entropie.hellocuriosity.news.News;
 
 public class CategoryFilter implements NewsFilter {
 
@@ -16,15 +16,15 @@ public class CategoryFilter implements NewsFilter {
 		
 		for (News news : newsList){
 			if (containsCategory(news))
-					filtredNews.add(news);
+				filtredNews.add(news);
 		}
 		
-		return null;
+		return filtredNews;
 	}
 	private boolean containsCategory(News news) {
 		
 		for (String category : news.getCategories()){
-			if (categories.contains(category)){
+			if (categories.contains(category.toLowerCase())){
 				return true;
 			}
 		}

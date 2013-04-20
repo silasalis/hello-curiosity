@@ -1,6 +1,7 @@
-package br.com.entropie.hellocuriosity;
+package br.com.entropie.hellocuriosity.news;
 
 import java.util.List;
+
 
 public class Timeline {
 

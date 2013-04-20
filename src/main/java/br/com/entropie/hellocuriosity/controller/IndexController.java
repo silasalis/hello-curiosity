@@ -5,10 +5,11 @@ import java.util.List;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.view.Results;
-import br.com.entropie.hellocuriosity.News;
-import br.com.entropie.hellocuriosity.Timeline;
+import br.com.entropie.hellocuriosity.news.News;
+import br.com.entropie.hellocuriosity.news.Timeline;
+import br.com.entropie.hellocuriosity.news.filters.CategoryFilter;
 import br.com.entropie.hellocuriosity.rss.RssReader;
+import br.com.entropie.hellocuriosity.utils.PlainJSONSerialization;
 
 @Resource
 public class IndexController {
@@ -27,8 +28,8 @@ public class IndexController {
 
 	@Get("/timeline")
 	public void timeline() {
-		List<News> news = this.rssReader.defaultFeed().lastNews();
+		List<News> news = this.rssReader.defaultFeed().lastNews(new CategoryFilter());
 		Timeline timeline = new Timeline(news);
-		this.result.use(Results.json()).from(timeline).recursive().serialize();
+		this.result.use(PlainJSONSerialization.class).from(timeline).recursive().serialize();
 	}
 }

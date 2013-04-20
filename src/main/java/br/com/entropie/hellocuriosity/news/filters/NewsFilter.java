@@ -1,8 +1,8 @@
-package br.com.entropie.hellocuriosity.rss;
+package br.com.entropie.hellocuriosity.news.filters;
 
 import java.util.List;
 
-import br.com.entropie.hellocuriosity.News;
+import br.com.entropie.hellocuriosity.news.News;
 
 public interface NewsFilter {
 
