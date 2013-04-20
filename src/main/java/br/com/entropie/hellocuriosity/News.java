@@ -51,7 +51,7 @@ public class News {
 	}
 
 	private static Asset extractEntryImage(SyndEntry entry) {
-		String html = entry.getDescription().getValue();
+		String html = entry.getDescription().getValue().replaceAll("-thm", "");
 		String value = Jsoup.parse(html, "UTF-8").select("img").attr("src");
 		return new Asset(value);
 	}

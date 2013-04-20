@@ -23,6 +23,10 @@ public class IndexController {
 
 	@Get("/")
 	public void index() {
+	}
+
+	@Get("/timeline")
+	public void timeline() {
 		List<News> news = this.rssReader.defaultFeed().lastNews();
 		Timeline timeline = new Timeline(news);
 		result.use(Results.json()).from(timeline).recursive().serialize();
