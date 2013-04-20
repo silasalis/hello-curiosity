@@ -1,6 +1,8 @@
-package br.com.entropie.hellocuriosity;
+package br.com.entropie.hellocuriosity.news;
 
 import java.util.Date;
+
+import com.sun.syndication.feed.synd.SyndEntry;
 
 public class News {
 
@@ -9,7 +11,7 @@ public class News {
 	private final String image;
 	private final Date published;
 
-	public News(String title, String content, String image, Date published) {
+	private News(String title, String content, String image, Date published) {
 		this.title = title;
 		this.content = content;
 		this.image = image;
@@ -37,4 +39,16 @@ public class News {
 		return "News [title=" + title + ", content=" + content + ", image="
 				+ image + ", published=" + published + "]";
 	}
+
+	public static News buildWith(SyndEntry entry) {
+		return new News(entry.getTitle(), extractEntryDescription(entry), "",
+				entry.getPublishedDate());
+
+	}
+
+	private static String extractEntryDescription(SyndEntry entry) {
+		return entry.getDescription().getValue().replaceAll("<!--.*?-->", "")
+				.replaceAll("<[^>]+>", "").trim();
+	}
+
 }
