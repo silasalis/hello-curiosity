@@ -1,8 +1,9 @@
-package br.com.entropie.hellocuriosity;
+package br.com.entropie.hellocuriosity.news;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.jsoup.Jsoup;
+
 import br.com.entropie.hellocuriosity.utils.Dates;
 
 import com.sun.syndication.feed.synd.SyndCategoryImpl;

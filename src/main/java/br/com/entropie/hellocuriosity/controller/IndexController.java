@@ -6,9 +6,9 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
-import br.com.entropie.hellocuriosity.News;
 import br.com.entropie.hellocuriosity.Timeline;
-import br.com.entropie.hellocuriosity.rss.CategoryFilter;
+import br.com.entropie.hellocuriosity.news.News;
+import br.com.entropie.hellocuriosity.news.filters.CategoryFilter;
 import br.com.entropie.hellocuriosity.rss.RssReader;
 
 @Resource

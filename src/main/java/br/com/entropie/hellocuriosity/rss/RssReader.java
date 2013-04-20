@@ -8,7 +8,8 @@ import java.util.List;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.entropie.hellocuriosity.HelloCuriosityException;
-import br.com.entropie.hellocuriosity.News;
+import br.com.entropie.hellocuriosity.news.News;
+import br.com.entropie.hellocuriosity.news.filters.NewsFilter;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;

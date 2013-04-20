@@ -1,10 +1,10 @@
-package br.com.entropie.hellocuriosity.rss;
+package br.com.entropie.hellocuriosity.news.filters;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import br.com.entropie.hellocuriosity.News;
+import br.com.entropie.hellocuriosity.news.News;
 
 public class CategoryFilter implements NewsFilter {
 

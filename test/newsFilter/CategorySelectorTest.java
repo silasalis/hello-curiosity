@@ -11,9 +11,9 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.entropie.hellocuriosity.News;
-import br.com.entropie.hellocuriosity.rss.CategoryFilter;
-import br.com.entropie.hellocuriosity.rss.NewsFilter;
+import br.com.entropie.hellocuriosity.news.News;
+import br.com.entropie.hellocuriosity.news.filters.CategoryFilter;
+import br.com.entropie.hellocuriosity.news.filters.NewsFilter;
 
 
 public class CategorySelectorTest {
