@@ -13,13 +13,15 @@ public class News {
 
 	private final String headline;
 	private final String text;
+	private final String url;
 	private final String startDate;
 	private final List<String> categories;
 	private final Asset asset;
 
-	public News(String headline, String text, String startDate, Asset asset, List<String> categories) {
+	public News(String headline, String text, String url, String startDate, Asset asset, List<String> categories) {
 		this.headline = headline;
 		this.text = text;
+		this.url = url;
 		this.startDate = startDate;
 		this.categories = categories;
 		this.asset = asset;
@@ -41,16 +43,21 @@ public class News {
 		return categories;
 	}
 
-    
+	public String getUrl() {
+		return url;
+	}
+
 	public String toString() {
-		return "News [headline=" + headline + ", text=" + text + ", startDate="
-+ startDate + "]";
+		return "News [headline=" + headline + ", text=" + text + ", startDate=" + startDate + "]";
 	}
 
 	public static News buildWith(SyndEntry entry) {
-		return new News(entry.getTitle(), extractEntryDescription(entry),
-				Dates.format(entry.getPublishedDate()), extractEntryImage(entry), extractCategories(entry));
-
+		return new News(
+				entry.getTitle(), 
+				extractEntryDescription(entry),
+				entry.getLink(),
+				Dates.format(entry.getPublishedDate()), 
+				extractEntryImage(entry), extractCategories(entry));
 	}
 
 	private static List<String> extractCategories(SyndEntry entry) {

@@ -30,4 +30,8 @@ public class Asset {
 		return caption;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
 }
