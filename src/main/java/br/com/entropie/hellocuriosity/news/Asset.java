@@ -29,9 +29,4 @@ public class Asset {
 	public String getCaption() {
 		return caption;
 	}
-
-	public String getUrl() {
-		return url;
-	}
-
 }

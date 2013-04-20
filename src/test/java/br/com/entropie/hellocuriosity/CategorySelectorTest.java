@@ -39,13 +39,13 @@ public class CategorySelectorTest {
 
 		Date now = Calendar.getInstance().getTime();
 
-		News news1 = new News("headline 1", "some text 1", now.toString(),
+		News news1 = new News("headline 1", "some text 1", "http://bit.ly",  now.toString(),
 				null, wantedCategories);
-		News news2 = new News("headline 2", "some text 2", now.toString(),
+		News news2 = new News("headline 2", "some text 2","http://bit.ly", now.toString(),
 				null, wantedCategories);
-		News news3 = new News("headline 3", "some text 3", now.toString(),
+		News news3 = new News("headline 3", "some text 3", "http://bit.ly",now.toString(),
 				null, new ArrayList<String>());
-		News news4 = new News("headline 4", "some text 4", now.toString(),
+		News news4 = new News("headline 4", "some text 4", "http://bit.ly",now.toString(),
 				null, notWantedCategories);
 
 		ArrayList<News> newsList = new ArrayList<News>();
