@@ -1,6 +1,7 @@
 package br.com.entropie.hellocuriosity.rss;
 
 import java.io.Closeable;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,43 +18,59 @@ import com.sun.syndication.io.XmlReader;
 @Component
 public class RssReader {
 
-	private final String root = "http://mars.jpl.nasa.gov/rss/news.xml";
+	private final static String root = "http://mars.jpl.nasa.gov/rss/news.xml";
+	private SyndFeed feeder;
+	
+	public RssReader(){}
 
+	private RssReader(SyndFeed feeder) {
+		this.feeder = feeder;
+	}
+	
+	public static RssReader feedFor(String url) {
+		
+		XmlReader reader = null;
+		SyndFeed feed = null;
+		try {
+			reader = new XmlReader(new URL(url));
+			feed = new SyndFeedInput().build(reader);
+			
+		} catch (Exception e) {
+			closeQuietly(reader);
+			throw new HelloCuriosityException("Error building your feed, sorry =(", e);
+		}
+		
+		return new RssReader(feed);
+
+	}
+	
 	public List<News> lastNews() {
 
-		XmlReader reader = null;
+		List<News> news = new ArrayList<News>();
+		
+		for (Object entry : feeder.getEntries()) {
+		
+			news.add(News.buildWith((SyndEntry) entry));
 
-		try {
-			reader = new XmlReader(new URL(root));
-			SyndFeed feed = new SyndFeedInput().build(reader);
-
-			List<News> news = new ArrayList<News>();
-
-			for (Object entry : feed.getEntries()) {
-
-				news.add(News.buildWith((SyndEntry) entry));
-
-			}
-
-			return news;
-		} catch (Exception e) {
-			throw new HelloCuriosityException(e.getMessage(), e);
-		} finally {
-			closeQuietly(reader);
 		}
-	}
 
+		return news;
+
+	}
+	
 	private static void closeQuietly(Closeable closeable) {
-		try {
-			if (closeable != null) {
+		if (closeable != null) {
+			try {
 				closeable.close();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
+	
 
 	public static void main(String[] args) throws Exception {
-		System.out.println(new RssReader().lastNews());
+		System.out.println(new RssReader().feedFor(root).lastNews());
 	}
+	
 }
