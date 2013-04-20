@@ -49,29 +49,29 @@
 					</webAppConfig>
 				</configuration>
 			</plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>appassembler-maven-plugin</artifactId>
-                <version>1.1.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>assemble</goal>
-                        </goals>
-                        <configuration>
-                            <assembleDirectory>target</assembleDirectory>
-                            <extraJvmArguments>-Xmx512m</extraJvmArguments>
-                            <programs>
-                                <program>
-                                    <mainClass>Main</mainClass>
-                                    <name>webapp</name>
-                                </program>
-                            </programs>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>appassembler-maven-plugin</artifactId>
+				<version>1.1.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>assemble</goal>
+						</goals>
+						<configuration>
+							<assembleDirectory>target</assembleDirectory>
+							<extraJvmArguments>-Xmx512m</extraJvmArguments>
+							<programs>
+								<program>
+									<mainClass>Main</mainClass>
+									<name>webapp</name>
+								</program>
+							</programs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -96,21 +96,27 @@
 			<artifactId>hsqldb</artifactId>
 			<version>2.2.8</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.hibernate</groupId> -->
-<!-- 			<artifactId>hibernate-entitymanager</artifactId> -->
-<!-- 			<version>4.0.1.Final</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.hibernate</groupId> -->
-<!-- 			<artifactId>hibernate-c3p0</artifactId> -->
-<!-- 			<version>4.0.1.Final</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.hibernate</groupId> -->
-<!-- 			<artifactId>hibernate-validator</artifactId> -->
-<!-- 			<version>4.2.0.Final</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate</groupId> -->
+		<!-- <artifactId>hibernate-entitymanager</artifactId> -->
+		<!-- <version>4.0.1.Final</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate</groupId> -->
+		<!-- <artifactId>hibernate-c3p0</artifactId> -->
+		<!-- <version>4.0.1.Final</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate</groupId> -->
+		<!-- <artifactId>hibernate-validator</artifactId> -->
+		<!-- <version>4.2.0.Final</version> -->
+		<!-- </dependency> -->
+
+		<dependency>
+			<groupId>rome</groupId>
+			<artifactId>rome</artifactId>
+			<version>0.8</version>
+		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
