@@ -27,12 +27,12 @@ public class RssReader {
 		this.feeder = feeder;
 	}
 	
-	public static RssReader feedFor(String url) {
+	public RssReader defaultFeed() {
 		
 		XmlReader reader = null;
 		SyndFeed feed = null;
 		try {
-			reader = new XmlReader(new URL(url));
+			reader = new XmlReader(new URL(root));
 			feed = new SyndFeedInput().build(reader);
 			
 		} catch (Exception e) {
@@ -48,15 +48,10 @@ public class RssReader {
 	}
 	
 	public List<News> lastNews() {
-
 		List<News> news = new ArrayList<News>();
-		
 		for (Object entry : feeder.getEntries()) {
-		
 			news.add(News.buildWith((SyndEntry) entry));
-
 		}
-
 		return news;
 	}
 	
@@ -69,10 +64,8 @@ public class RssReader {
 			}
 		}
 	}
-	
 
 	public static void main(String[] args) throws Exception {
-		System.out.println(new RssReader().feedFor(root).lastNews());
+		System.out.println(new RssReader().defaultFeed().lastNews());
 	}
-	
 }

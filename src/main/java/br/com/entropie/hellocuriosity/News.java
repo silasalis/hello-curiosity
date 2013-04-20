@@ -1,9 +1,8 @@
 package br.com.entropie.hellocuriosity;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
+import org.jsoup.Jsoup;
 import br.com.entropie.hellocuriosity.utils.Dates;
 
 import com.sun.syndication.feed.synd.SyndCategoryImpl;
@@ -13,17 +12,16 @@ public class News {
 
 	private final String headline;
 	private final String text;
-	private final String image;
 	private final String startDate;
-	private List<String> categories;
-	
+	private final List<String> categories;
+	private final Asset asset;
 
-	public News(String headline, String text, String image, String startDate, List<String> categories) {
+	public News(String headline, String text, String startDate, Asset asset, List<String> categories) {
 		this.headline = headline;
 		this.text = text;
-		this.image = image;
 		this.startDate = startDate;
 		this.categories = categories;
+		this.asset = asset;
 	}
 
 	public String getHeadline() {
@@ -32,10 +30,6 @@ public class News {
 
 	public String getText() {
 		return text;
-	}
-
-	public String getImage() {
-		return image;
 	}
 
 	public String getStartDate() {
@@ -47,16 +41,14 @@ public class News {
 	}
 
     
-	@Override
 	public String toString() {
-		return "News [headline=" + headline + ", text=" + text + ", image="
-				+ image + ", startDate=" + startDate + ", categories="
-				+ categories + "]";
+		return "News [headline=" + headline + ", text=" + text + ", startDate="
++ startDate + "]";
 	}
 
 	public static News buildWith(SyndEntry entry) {
-		return new News(entry.getTitle(), extractEntryDescription(entry), "",
-				formatDate(entry.getPublishedDate()), extractCategories(entry));
+		return new News(entry.getTitle(), extractEntryDescription(entry),
+				Dates.format(entry.getPublishedDate()), extractEntryImage(entry), extractCategories(entry));
 
 	}
 
@@ -67,14 +59,18 @@ public class News {
 			categories.add(categoryName);
 		}
 		return categories;
+		
 	}
 
 	private static String extractEntryDescription(SyndEntry entry) {
-		return entry.getDescription().getValue().replaceAll("<!--.*?-->", "")
-				.replaceAll("<[^>]+>", "").trim();
+		String html = entry.getDescription().getValue();
+		return html.replaceAll("<!--.*?-->", "").replaceAll("<[^>]+>", "").trim();
 	}
 
-	private static String formatDate(Date entry) {
-		return Dates.format(entry);
+	private static Asset extractEntryImage(SyndEntry entry) {
+		String html = entry.getDescription().getValue();
+		String value = Jsoup.parse(html, "UTF-8").select("img").attr("src");
+		return new Asset(value);
 	}
+
 }
