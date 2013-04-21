@@ -34,14 +34,14 @@ public class IndexController {
 
 	@Get("/timeline")
 	public void timeline() {
-		List<News> news = this.rssReader.defaultFeed().lastNews(
-				new CategoryFilter());
+		List<News> news = this.rssReader.defaultFeed().lastNews();
 
 		List<News> fakeNews = fakeDB.lastNews();
-		List<News> tNews = twitterNews.lastNews();
-		
 		news.addAll(fakeNews);
-		news.addAll(tNews);
+		
+		//TODO fjunior: tirando tweets da timeline por enquanto 
+		//List<News> tNews = twitterNews.lastNews();
+		//news.addAll(tNews);
 		
 		Timeline timeline = new Timeline(news);
 
