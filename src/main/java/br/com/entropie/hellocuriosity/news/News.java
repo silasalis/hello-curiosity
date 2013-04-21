@@ -128,7 +128,16 @@ public class News {
 		if (text == null) {
 			if (other.text != null)
 				return false;
+		}
+		if (text == null) {
+			if (other.text != null)
+				return false;
 		} else if (!text.equalsIgnoreCase(other.text))
+			return false;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equalsIgnoreCase(other.url))
 			return false;
 		return true;
 	}

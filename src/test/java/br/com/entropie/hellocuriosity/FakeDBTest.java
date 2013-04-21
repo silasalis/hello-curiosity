@@ -38,13 +38,13 @@ public class FakeDBTest {
 		
 		Asset fakeNews1Asset = new Asset("fake1imgsrc");
 		
-		News fakeNews1 = new News("meu headline", "uma descricao bonita", null, fakeNews1Date, fakeNews1Asset , historyCategories);
+		News fakeNews1 = new News("meu headline", "uma descricao bonita", "", fakeNews1Date, fakeNews1Asset , historyCategories);
 		
 		String fakeNews2Date = "2010,3,12";
 		
 		Asset fakeNews2Asset = new Asset("fake2imgsrc");
 		
-		News fakeNews2 = new News("meu outro headline", "uma descricao feia", null, fakeNews2Date, fakeNews2Asset , historyCategories);
+		News fakeNews2 = new News("meu outro headline", "uma descricao feia", "minhaUrl2", fakeNews2Date, fakeNews2Asset , historyCategories);
 		FakeDB fakeDB = new FakeDB();
 		
 		
