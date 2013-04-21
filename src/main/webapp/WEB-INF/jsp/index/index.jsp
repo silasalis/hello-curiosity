@@ -1,1 +1,1 @@
-<meta HTTP-EQUIV="REFRESH" content="0; url=http://www.powerfrella.com.br/nasa">
+<meta HTTP-EQUIV="REFRESH" content="0; url=http://www.powerfreela.com.br/nasa">
