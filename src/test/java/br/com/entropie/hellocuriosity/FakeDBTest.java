@@ -1,14 +1,12 @@
 package br.com.entropie.hellocuriosity;
 
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Scanner;
 
 import jxl.read.biff.BiffException;
 
@@ -18,7 +16,6 @@ import org.junit.Test;
 import br.com.entropie.hellocuriosity.news.Asset;
 import br.com.entropie.hellocuriosity.news.News;
 import br.com.entropie.hellocuriosity.repository.FakeDB;
-import br.com.entropie.hellocuriosity.utils.Dates;
 
 public class FakeDBTest {
 

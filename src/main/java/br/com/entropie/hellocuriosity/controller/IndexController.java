@@ -1,9 +1,6 @@
 package br.com.entropie.hellocuriosity.controller;
 
-import java.io.IOException;
 import java.util.List;
-
-import jxl.read.biff.BiffException;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Resource;
@@ -34,17 +31,15 @@ public class IndexController {
 
 	@Get("/timeline")
 	public void timeline() {
-		List<News> news = this.rssReader.defaultFeed().lastNews(new CategoryFilter());
+		List<News> news = this.rssReader.defaultFeed().lastNews(
+				new CategoryFilter());
+
+		List<News> fakeNews = fakeDB.getFakeNews();
 		
-		//TODO quem sabe arrumar isso
-		try {
-			List<News> fakeNews = fakeDB.getFakeNews();
-			news.addAll(fakeNews);
-		} catch (Exception e) {
-			//fjunior - catch eh para fracos
-		}
+		news.addAll(fakeNews);
 		Timeline timeline = new Timeline(news);
-		
-		this.result.use(PlainJSONSerialization.class).from(timeline).recursive().serialize();
+
+		this.result.use(PlainJSONSerialization.class).from(timeline)
+				.recursive().serialize();
 	}
 }
