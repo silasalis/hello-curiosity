@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello, Curiosity!</title>
+  <meta charset="utf-8"> 
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <link href="css/app/app.css" rel="stylesheet" media="screen">
+</head>
+<body id="home">
+  <header>
+      <img src="logo.png" id="logo" />
+      <div id="marte-w">
+        <h1 id="max"></h1>
+        <p><h3 id="min"></h3> On Mars: 
+          <strong><span class="mars-countdown-days">0 Sol</span> &middot; <span class="mars-countdown-hours">0h</span><span class="mars-countdown-minutes">0m</span><span class="mars-countdown-seconds">0s</span></strong>
+        </p>
+      </div>
+      <div class="clear"></div>
+  </header>
+  <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <ul class="nav nav-topo">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#social">Social</a></li>
+        <li><a href="#share">Share your Curiosity</a></li>
+      </ul>
+
+      <div class="nav-collapse collapse">
+      </div>
+
+    </div>
+  </div>
+
+  <div id="my-timeline"></div>
+
+<div class="container" id="social">
+  <div class="row-fluid" style="text-align: center;">
+    <div class="span12">
+    <h1 class="title-jumbo">Follow Curiosity</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, rerum, eligendi, minima, voluptate similique iste earum ratione molestiae ipsam a quidem explicabo alias. Magnam, error, eaque excepturi veniam ea tempora.</p>
+    </div>
+    <br />
+    <br />
+   <div class="span12">
+      <img src="http://icons.iconarchive.com/icons/danleech/simple/128/facebook-icon.png" />
+      <img src="http://icons.iconarchive.com/icons/danleech/simple/128/twitter-icon.png" />
+      <img src="http://icons.iconarchive.com/icons/danleech/simple/128/google-plus-icon.png" />
+      <img src="http://icons.iconarchive.com/icons/danleech/simple/128/foursquare-icon.png" />
+      <img src="http://icons.iconarchive.com/icons/danleech/simple/128/youtube-icon.png" />
+    </div>
+    <br />
+   <div class="span12">
+      <ul class="pager">
+        <li><a href="#home">↑ Back to Top</a></li>
+        <li><a href="#share">Share your Curiosity →</a></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+
+<!-- share -->
+<div class="container" id="share">
+  <div style="text-align: center;">
+    <div class="span12">
+    <h1 class="title-jumbo">Share your Curiosity</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, rerum, eligendi, minima, voluptate similique iste earum ratione molestiae ipsam a quidem explicabo alias. Magnam, error, eaque excepturi veniam ea tempora.</p>
+      <p>Reiciendis, rerum, eligendi, minima, voluptate similique iste earum ratione molestiae ipsam a quidem explicabo alias..</p>
+    </div>
+  </div>
+  </div>
+
+  <div class="row-fluid" id="containter-c">
+      <div class="span5">
+        <div style="width: 100%; background: url('http://i.imgur.com/MP9rhMQ.png') no-repeat #f4f4f4; padding: 10px 100px; width: 520px; margin-bottom: 0px; height: 83px; box-sizing: border-box;"><h3>#shareyourcuriosity</h3></div>
+        <a class="twitter-timeline" data-chrome="nofooter transparent noheader" data-dnt="true" href="https://twitter.com/search?q=%23curiosity+OR+%23shareyourcuriosity" data-widget-id="325739261657747456"></a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+      <div class="span7">
+        <div style="width: 100%; background: url('http://i.imgur.com/ZWtvZzf.png') no-repeat #f4f4f4; padding: 10px 100px; width: 100%; margin-bottom: 0px; height: 83px; box-sizing: border-box;"><h3>Share your curiosity</h3></div>
+        <iframe src="http://www.facebook.com/plugins/comments.php?href=http://hello-curiosity.herokuapp.com&amp;num_posts=2&amp;action=comment&amp;scrolling=yes&amp;" style="border:0px #FFFFFF none;" name="My iFrame" scrolling="auto" frameborder="1" marginheight="0px" marginwidth="0px" height="600px" width="100%"></iframe>
+      </div>
+    </div>
+
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript">
+  var json_variable;
+
+   $(document).ready(function() {
+      $.getJSON('getJSON.php?url=http%3A%2F%2Fhello-curiosity.herokuapp.com%2Ftimeline', function(json){
+       var jsonstr = JSON.stringify(json);
+       var new_jsonstr = jsonstr.replace('"news"', '"date"'); 
+       var new_obj = JSON.parse(new_jsonstr);
+       json_variable = new_obj;
+      }).done(function() {
+         createStoryJS({
+            type:       'timeline',
+            width:      '100%',
+            height:     '600',
+            source:     json_variable,
+            embed_id:   'my-timeline'
+        });
+      });
+
+      $.getJSON('getJSON.php?url=http%3A%2F%2Fmarsweather.ingenology.com%2Fv1%2Flatest%2F', function(json){
+       $("#max").html(json.report.max_temp + "ºC");
+       $("#min").html(json.report.min_temp + "ºC");
+      });
+   });
+  </script>
+<script type="text/javascript">
+(function($) {
+$(function() {
+var PlanetCountdown = function( Y, M, D, h, m, s, ms ) {
+var rxformat = /\{(sign|d{1,4}|([HhMs])\2?|l)\}/g;
+var timestamp = Date.UTC( Y, M, D, h, m, s, ms );
+var padder = function( val, len, chr ) {
+var chr = typeof( chr ) == 'string' ? chr.charAt( 0 ) : '0',
+len = len > 0 ? len : 2,
+val = val.toString();
+if ( val.length <= len + 1 ) {
+return Array( len + 1 - val.length ).join( chr ) + val;
+}
+return val;
+};
+var format = function( times, string ) {
+var tokens = {
+'{sign}': times.sign,
+'{d}': times.day,
+'{dd}': padder( times.day, 2 ),
+'{h}': times.hour % 12 || 12,
+'{hh}': padder( times.hour % 12 || 12, 2 ),
+'{H}': times.hour,
+'{HH}': padder( times.hour, 2 ),
+'{M}': times.minute,
+'{MM}': padder( times.minute, 2 ),
+'{s}': times.second,
+'{ss}': padder( times.second, 2 ),
+'{l}': padder( times.millisecond , 3)
+};
+return string.replace( rxformat, function ( $0 ) {
+return $0 in tokens ? tokens[ $0 ] : $0.slice( 1, $0.length - 1 );
+});
+};
+var baseplanet = function( multiplier ) {
+return this.prototype = {
+'format': function( str ) {
+switch ( typeof( str ) ) {
+case 'string':
+return format( this.update(), str );
+case 'function':
+return str.call( this, this.update() );
+}
+},
+'update': function() {
+var now = new Date();
+var diff = ( now.getTime() - timestamp ) * multiplier;
+var milliseconds, seconds, minutes, hours, days;
+var millisecond, second, minute, hour, day;
+var sign = diff < 0 ? '-' : '+';
+return {
+'sign': sign,
+'milliseconds': milliseconds = Math.floor( Math.abs( diff ) ),
+'seconds': seconds = Math.floor( milliseconds / 1000 ),
+'minutes': minutes = Math.floor( seconds / 60 ),
+'hours': hours = Math.floor( minutes / 60 ),
+'days': days = Math.floor( hours / 24 ),
+'day': days,
+'hour': hours - ( days * 24 ),
+'minute': minutes - ( hours * 60 ),
+'second': seconds - ( minutes * 60 ),
+'millisecond': milliseconds - ( seconds * 1000 )
+};
+}
+};
+return this;
+};
+return this.prototype = {
+'earth': new baseplanet( 1 ),
+'mars': new baseplanet( 0.9732442967141575 )
+};
+};
+
+var countdown = new PlanetCountdown( 2012, 7, 5, 13, 49, 59, 0 );
+var days = $( '.mars-countdown-days' );
+var hours = $( '.mars-countdown-hours' );
+var minutes = $( '.mars-countdown-minutes' );
+var seconds = $( '.mars-countdown-seconds' );
+var update = function() {
+countdown.mars.format( function( times ) {
+days.text( times.day + " Sol ");
+hours.text( times.hour + "h");
+minutes.text( times.minute + "m");
+seconds.text( times.second + "s");
+} );
+};
+setInterval( update, countdown.earth.update().sign == '-' ? 1000 : 1028 );
+});
+})(jQuery);
+</script>
+
+<script type="text/javascript">
+  $(function() {
+  
+    function filterPath(string) {
+      return string
+      .replace(/^\//,'')
+      .replace(/(index|default).[a-zA-Z]{3,4}$/,'')
+      .replace(/\/$/,'');
+    }
+  
+    var locationPath = filterPath(location.pathname);
+    var scrollElem = scrollableElement('html', 'body');
+  
+    // Any links with hash tags in them (can't do ^= because of fully qualified URL potential)
+    $('a[href*=#]').each(function() {
+  
+      // Ensure it's a same-page link
+      var thisPath = filterPath(this.pathname) || locationPath;
+      if (  locationPath == thisPath
+        && (location.hostname == this.hostname || !this.hostname)
+        && this.hash.replace(/#/,'') ) {
+  
+          // Ensure target exists
+          var $target = $(this.hash), target = this.hash;
+          if (target) {
+  
+            // Find location of target
+            var targetOffset = $target.offset().top;
+            $(this).click(function(event) {
+  
+              // Prevent jump-down
+              event.preventDefault();
+  
+              // Animate to target
+              $(scrollElem).animate({scrollTop: targetOffset}, 1000, function() {
+  
+                // Set hash in URL after animation successful
+                location.hash = target;
+  
+              });
+            });
+          }
+      }
+  
+    });
+  
+    // Use the first element that is "scrollable"  (cross-browser fix?)
+    function scrollableElement(els) {
+      for (var i = 0, argLength = arguments.length; i <argLength; i++) {
+        var el = arguments[i],
+        $scrollElement = $(el);
+        if ($scrollElement.scrollTop()> 0) {
+          return el;
+        } else {
+          $scrollElement.scrollTop(1);
+          var isScrollable = $scrollElement.scrollTop()> 0;
+          $scrollElement.scrollTop(0);
+          if (isScrollable) {
+            return el;
+          }
+        }
+      }
+      return [];
+    }
+  
+  });
+</script>
+
+  <script type="text/javascript" src="plugins/timeline/js/storyjs-embed.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <style type="text/css">
+  .vco-storyjs{font-family:'Lato',sans-serif;}.vco-storyjs .twitter,.vco-storyjs .vcard,.vco-storyjs .messege,.vco-storyjs .credit,.vco-storyjs .caption,.vco-storyjs .zoom-in,.vco-storyjs .zoom-out,.vco-storyjs .back-home,.vco-storyjs .time-interval div,.vco-storyjs .time-interval-major div,.vco-storyjs .nav-container{font-family:'Lato',sans-serif !important;}
+  .vco-storyjs .vco-feature h1.date,.vco-storyjs .vco-feature h2.date,.vco-storyjs .vco-feature h3.date,.vco-storyjs .vco-feature h4.date,.vco-storyjs .vco-feature h5.date,.vco-storyjs .vco-feature h6.date{font-family:'Lato',sans-serif !important;}
+  .vco-storyjs .timenav h1,.vco-storyjs .flag-content h1,.vco-storyjs .era h1,.vco-storyjs .timenav h2,.vco-storyjs .flag-content h2,.vco-storyjs .era h2,.vco-storyjs .timenav h3,.vco-storyjs .flag-content h3,.vco-storyjs .era h3,.vco-storyjs .timenav h4,.vco-storyjs .flag-content h4,.vco-storyjs .era h4,.vco-storyjs .timenav h5,.vco-storyjs .flag-content h5,.vco-storyjs .era h5,.vco-storyjs .timenav h6,.vco-storyjs .flag-content h6,.vco-storyjs .era h6{font-family:'Lato',sans-serif !important;}
+  .vco-storyjs p,.vco-storyjs blockquote,.vco-storyjs blockquote p,.vco-storyjs .twitter blockquote p{font-family:'Lato',serif !important;}
+  .vco-storyjs p{font-size:16px;line-height:22px;}
+  .vco-storyjs .wikipedia p{font-size:14px !important;line-height:20px !important;}
+  .vco-storyjs .vco-feature h1,.vco-storyjs .vco-feature h2,.vco-storyjs .vco-feature h3,.vco-storyjs .vco-feature h4,.vco-storyjs .vco-feature h5,.vco-storyjs .vco-feature h6{font-family:'Lato',sans-serif;font-weight:900;}
+  .timeline-tooltip{font-family:'Lato',sans-serif;}
+  </style>
+</body>
+</html>
