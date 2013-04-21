@@ -11,4 +11,10 @@ public class Dates {
 		return sdf.format(date);
 	}
 	
+	public static String formateFakeDate(String fakeDate) {
+		String[] fakeDateFields = fakeDate.split("/");
+		
+		return fakeDateFields[2]+","+fakeDateFields[1]+","+fakeDateFields[0];
+	}
+	
 }
