@@ -1,1 +1,1 @@
-<p>Hello, Curiosity!</p>
+<meta HTTP-EQUIV="REFRESH" content="0; url=http://www.powerfrella.com.br/nasa">
