@@ -1,5 +1,6 @@
 body {
 	font-size: 'Lato', sans-serif;
+	overflow-x: hidden;
 }
 
 header {
@@ -99,4 +100,12 @@ a:hover {
 .title-jumbo {
 	font-size: 4.4em;
 	line-height: 1.5;
+}
+
+.botao-time {
+	color: #333 !important;
+	padding: 10px !important;
+	background: #ccc;
+	margin-top: 15px !important;
+	display: inline-block;
 }
