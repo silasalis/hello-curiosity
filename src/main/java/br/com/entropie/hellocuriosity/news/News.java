@@ -113,12 +113,12 @@ public class News {
 		if (categories == null) {
 			if (other.categories != null)
 				return false;
-		} else if (!categories.equals(other.categories))
+		} else if (!(categories.containsAll(other.categories) && other.categories.containsAll(categories)))
 			return false;
 		if (headline == null) {
 			if (other.headline != null)
 				return false;
-		} else if (!headline.equals(other.headline))
+		} else if (!headline.equalsIgnoreCase(other.headline))
 			return false;
 		if (startDate == null) {
 			if (other.startDate != null)
@@ -128,10 +128,11 @@ public class News {
 		if (text == null) {
 			if (other.text != null)
 				return false;
-		} else if (!text.equals(other.text))
+		} else if (!text.equalsIgnoreCase(other.text))
 			return false;
 		return true;
 	}
+
 
 	
 }

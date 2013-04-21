@@ -1,9 +1,15 @@
 package br.com.entropie.hellocuriosity.repository;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
 
 import br.com.entropie.hellocuriosity.news.Asset;
 import br.com.entropie.hellocuriosity.news.News;
@@ -11,38 +17,34 @@ import br.com.entropie.hellocuriosity.utils.Dates;
 
 public class FakeDB {
 
-	private InputStream input;
 	private int HEADLINE_COLUMN = 0;
-	private int TEXT_COLUMN = 0;
-	private int DATE_COLUMN = 0;
-	private int ASSET_COLUMN = 0;
-	private int CATEGORY_COLUMN = 0;
+	private int TEXT_COLUMN = 1;
+	private int DATE_COLUMN = 2;
+	private int ASSET_COLUMN = 3;
+	private int CATEGORY_COLUMN = 4;
 	
-	public FakeDB(InputStream input) {
-		this.input = input;
-	}
 
-	public List<News> getFakeNews() {
+	public List<News> getFakeNews(InputStream input) throws BiffException, IOException {
 
 		
-		Scanner sc = new Scanner(input);
-		jumpHeader(sc);
-	
 		List<News> fakeNewsList = new ArrayList<News>();
+		//jumping hearder
+		Workbook workbook = Workbook.getWorkbook(input);
+		Sheet sheet = workbook.getSheet(0);
 		
-		while (sc.hasNext()){
-			String row = sc.nextLine();
-			String[] newsInfo = row.split(",");
+		for (int r = 1; r < sheet.getRows(); r++) {
 			
-			String headline = newsInfo[HEADLINE_COLUMN];
-			String text = newsInfo[TEXT_COLUMN];
-			String date = Dates.formateFakeDate(newsInfo[DATE_COLUMN]);
-			Asset asset = new Asset(newsInfo[ASSET_COLUMN]);
-			String category = newsInfo[CATEGORY_COLUMN];
+			Cell[] newsInfo = sheet.getRow(r);
+		
+			String headline = newsInfo[HEADLINE_COLUMN].getContents().trim();
+			String text = newsInfo[TEXT_COLUMN].getContents().trim();
+			String date = newsInfo[DATE_COLUMN].getContents().trim();
+			Asset asset = new Asset(newsInfo[ASSET_COLUMN].getContents().trim());
+			String category = newsInfo[CATEGORY_COLUMN].getContents().trim();
 			List<String> categories = new ArrayList<String>();
 			categories.add(category);
 			
-			News news = new News(headline, text, date, asset, categories);
+			News news = new News(headline, null, text, date, asset, categories);
 			
 			fakeNewsList.add(news);
 			
@@ -51,7 +53,4 @@ public class FakeDB {
 		
 	}
 
-	private void jumpHeader(Scanner sc) {
-		sc.nextLine();
-	}
 }
