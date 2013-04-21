@@ -48,4 +48,17 @@ public class IndexController {
 		this.result.use(PlainJSONSerialization.class).from(timeline)
 				.recursive().serialize();
 	}
+	
+	@Get("/timelineC")
+	public void timelineC() {
+		List<News> news = this.rssReader.defaultFeed().lastNews(new CategoryFilter());
+
+		List<News> fakeNews = fakeDB.lastNews();
+		news.addAll(fakeNews);
+		
+		Timeline timeline = new Timeline(news);
+
+		this.result.use(PlainJSONSerialization.class).from(timeline)
+				.recursive().serialize();
+	}
 }
