@@ -8,8 +8,9 @@ import br.com.caelum.vraptor.Result;
 import br.com.entropie.hellocuriosity.news.News;
 import br.com.entropie.hellocuriosity.news.Timeline;
 import br.com.entropie.hellocuriosity.news.filters.CategoryFilter;
-import br.com.entropie.hellocuriosity.repository.FakeDB;
-import br.com.entropie.hellocuriosity.rss.RssReader;
+import br.com.entropie.hellocuriosity.news.readers.FakeNews;
+import br.com.entropie.hellocuriosity.news.readers.RssReader;
+import br.com.entropie.hellocuriosity.news.readers.TwitterReader;
 import br.com.entropie.hellocuriosity.utils.PlainJSONSerialization;
 
 @Resource
@@ -17,12 +18,14 @@ public class IndexController {
 
 	private final Result result;
 	private final RssReader rssReader;
-	private final FakeDB fakeDB;
+	private final FakeNews fakeDB;
+	private final TwitterReader twitterNews;
 
-	public IndexController(Result result, RssReader rssReader, FakeDB fakeDB) {
+	public IndexController(Result result, RssReader rssReader, FakeNews fakeDB, TwitterReader twitterNews) {
 		this.result = result;
 		this.rssReader = rssReader;
 		this.fakeDB = fakeDB;
+		this.twitterNews = twitterNews;
 	}
 
 	@Get("/")
@@ -34,9 +37,12 @@ public class IndexController {
 		List<News> news = this.rssReader.defaultFeed().lastNews(
 				new CategoryFilter());
 
-		List<News> fakeNews = fakeDB.getFakeNews();
+		List<News> fakeNews = fakeDB.lastNews();
+		List<News> tNews = twitterNews.lastNews();
 		
 		news.addAll(fakeNews);
+		news.addAll(tNews);
+		
 		Timeline timeline = new Timeline(news);
 
 		this.result.use(PlainJSONSerialization.class).from(timeline)

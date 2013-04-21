@@ -1,8 +1,9 @@
 package br.com.entropie.hellocuriosity;
 
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertThat;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;

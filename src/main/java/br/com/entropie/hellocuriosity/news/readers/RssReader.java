@@ -1,4 +1,4 @@
-package br.com.entropie.hellocuriosity.rss;
+package br.com.entropie.hellocuriosity.news.readers;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -17,7 +17,7 @@ import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
 
 @Component
-public class RssReader {
+public class RssReader implements Reader {
 
 	private final static String root = "http://mars.jpl.nasa.gov/rss/news.xml";
 	private SyndFeed feeder;

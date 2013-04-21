@@ -2,8 +2,10 @@ package br.com.entropie.hellocuriosity.news;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.jsoup.Jsoup;
 
+import twitter4j.Status;
 import br.com.entropie.hellocuriosity.utils.Dates;
 
 import com.sun.syndication.feed.synd.SyndCategoryImpl;
@@ -51,6 +53,18 @@ public class News {
 		return "News [headline=" + headline + ", text=" + text + ", startDate=" + startDate + "]";
 	}
 
+	public static News buildWith(Status entry) {
+		List<String> categories = new ArrayList<String>();
+		categories.add("history");
+		
+		return new News(
+				"News from twitter @MarsCuriosity" , 
+				entry.getText(),
+				null,
+				Dates.format(entry.getCreatedAt()), 
+				null, categories);
+	}
+	
 	public static News buildWith(SyndEntry entry) {
 		return new News(
 				entry.getTitle(), 

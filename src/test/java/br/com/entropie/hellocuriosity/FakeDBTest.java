@@ -15,7 +15,7 @@ import org.junit.Test;
 
 import br.com.entropie.hellocuriosity.news.Asset;
 import br.com.entropie.hellocuriosity.news.News;
-import br.com.entropie.hellocuriosity.repository.FakeDB;
+import br.com.entropie.hellocuriosity.news.readers.FakeNews;
 
 public class FakeDBTest {
 
@@ -23,7 +23,7 @@ public class FakeDBTest {
 	private List<String> historyCategories;
 	@Before
 	public void setUp() throws Exception {
-		resourceAsStream = FakeDB.class.getResourceAsStream("/testHistory.xls");
+		resourceAsStream = FakeNews.class.getResourceAsStream("/testHistory.xls");
 		historyCategories = new ArrayList<String>();
 		historyCategories.add("history");
 	}
@@ -42,7 +42,7 @@ public class FakeDBTest {
 		Asset fakeNews2Asset = new Asset("fake2imgsrc");
 		
 		News fakeNews2 = new News("meu outro headline", "uma descricao feia", "minhaUrl2", fakeNews2Date, fakeNews2Asset , historyCategories);
-		FakeDB fakeDB = new FakeDB();
+		FakeNews fakeDB = new FakeNews();
 		
 		
 		List<News> fakeNews = fakeDB.getFakeNews(resourceAsStream);

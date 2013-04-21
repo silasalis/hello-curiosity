@@ -1,4 +1,4 @@
-package br.com.entropie.hellocuriosity.repository;
+package br.com.entropie.hellocuriosity.news.readers;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,7 +13,7 @@ import br.com.entropie.hellocuriosity.news.Asset;
 import br.com.entropie.hellocuriosity.news.News;
 
 @Component
-public class FakeDB {
+public class FakeNews {
 
 	private int HEADLINE_COLUMN = 0;
 	private int TEXT_COLUMN = 1;
@@ -23,9 +23,9 @@ public class FakeDB {
 	private int URL_COLUMN = 5;
 	private int EXPECTED_COLUMN_QTY = 6;
 
-	public List<News> getFakeNews() {
+	public List<News> lastNews() {
 		try {
-			List<News> fakeNews = getFakeNews(FakeDB.class.getResourceAsStream("/fakeNews.xls"));
+			List<News> fakeNews = getFakeNews(FakeNews.class.getResourceAsStream("/fakeNews.xls"));
 			return fakeNews;
 		} catch (Exception e) {
 			e.printStackTrace();
