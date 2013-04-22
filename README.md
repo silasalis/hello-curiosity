@@ -2,7 +2,15 @@
 
 This project is solving the Curiosity at Home challenge in the International Space Apps Challenge, led by the NASA.
 
-# Challenge Description:
+## Core team
+
+* Glauber Magalhães
+* Silas Monteiro
+* Joselito Jr.
+* Fernando Jr.
+* Gustavo Pinto {ghlp@cin.ufpe.br}
+
+## Challenge Description:
 
 Bring awareness of the Curiosity Rover’s activities down to earth. Foster a connection between citizens and the rover through software, visualizations, or a remote or app-controlled "home rover" that connects people to Mars and the Mars Rover, educating them and encouraging Mars enthusiasm.
 
