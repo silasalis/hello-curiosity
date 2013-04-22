@@ -14,7 +14,7 @@ This project is solving the Curiosity at Home challenge in the International Spa
 
 Bring awareness of the Curiosity Rover’s activities down to earth. Foster a connection between citizens and the rover through software, visualizations, or a remote or app-controlled "home rover" that connects people to Mars and the Mars Rover, educating them and encouraging Mars enthusiasm.
 
-See it online: hello-curiosity.herokuapp.com
+See it online: http://hello-curiosity.herokuapp.com
 
 ## Features
 
