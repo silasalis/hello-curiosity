@@ -3,12 +3,11 @@
 <head>
   <title>Hello, Curiosity!</title>
   <meta charset="utf-8"> 
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-
   <link href="css/app/app.css" rel="stylesheet" media="screen">
+  <link href="css/media.css" rel="stylesheet" media="screen">
   <link href="img/favicon.ico" rel="icon favicon">
 </head>
 <body id="home">
@@ -30,52 +29,129 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-
       <ul class="nav nav-topo">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#social">Social</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#pictures">Pictures</a></li>
         <li><a href="#share">Share your Curiosity</a></li>
       </ul>
-
-      <div class="nav-collapse collapse">
-      </div>
-
+      <ul class="nav pull-right">
+        <li class="active" id="link-c"><a href="#">Curiosity</a></li>
+        <li id="link-n"><a href="#">NASA</a></li>
+      </ul>
+      <p class="navbar-text pull-right"><strong>Timeline:</strong></p>
+      <div class="nav-collapse collapse"></div>
     </div>
   </div>
-
   <div id="my-timeline"></div>
-
 <div class="container" id="social">
   <div class="row-fluid" style="text-align: center;">
     <div class="span12">
     <h1 class="title-jumbo">Follow Curiosity</h1>
-      <p>Follow Curiosity and learn a lot about mars and sciences.</p>
+        <p>Stay on top of all the events space, and discover new worlds. Follow us on Social Networks.</p>
     </div>
     <br />
     <br />
    <div class="span12">
       <a href="https://www.facebook.com/MarsCuriosity" target="_blank" title="Facebook"><img src="http://icons.iconarchive.com/icons/danleech/simple/128/facebook-icon.png" /></a>
       <a href="https://twitter.com/MarsCuriosity" target="_blank" title="Twitter"><img src="http://icons.iconarchive.com/icons/danleech/simple/128/twitter-icon.png" /></a>
-      <a href="" target="_blank" title="Google Plus"><img src="http://icons.iconarchive.com/icons/danleech/simple/128/google-plus-icon.png" /></a>
+      <a href="https://plus.google.com/u/0/114515182489078459006/posts" target="_blank" title="Google Plus"><img src="http://icons.iconarchive.com/icons/danleech/simple/128/google-plus-icon.png" /></a>
       <a href="https://foursquare.com/marscuriosity" target="_blank" title="Foursquare"><img src="http://icons.iconarchive.com/icons/danleech/simple/128/foursquare-icon.png" /></a>
-      <a href="" target="_blank" title="Youtube"><img src="http://icons.iconarchive.com/icons/danleech/simple/128/youtube-icon.png" /></a>
+      <a href="http://www.youtube.com/playlist?list=PL00C1D0FA06115964" target="_blank" title="Youtube"><img src="http://icons.iconarchive.com/icons/danleech/simple/128/youtube-icon.png" /></a>
+      <a href="http://www.flickr.com/search/?q=Curiosity%20Rover" target="_blank" title="Flickr"><img src="http://icons.iconarchive.com/icons/danleech/simple/128/flickr-icon.png" /></a>
     </div>
     <br />
    <div class="span12">
+      <ul class="pager">
+        <li><a href="#home">↑ Back to Top</a></li>
+        <li><a href="#videos">Vídeos →</a></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+<div class="container" id="videos">
+  <div class="row-fluid" style="text-align: center;">
+    <div class="span12">
+        <h1 class="title-jumbo">Videos</h1>
+        <p>Watch latest videos of the mission. From the beginning until now, sharpen your curiosity increasingly with our videos.</p>
+    </div>
+    <div class="span12">
+      <!--Com a id Gallery ele pega todos os vídeos e constrou de acordo com o JSON -->
+      <div id="gallery"></div>
+      <br class="clear">
+    </div>
+   <div class="span12">
+      <ul class="pager">
+        <li><a href="#home">↑ Back to Top</a></li>
+        <li><a href="#pictures">Pictures →</a></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <!--Galeria de fotos-->
+  <div class="container" id="pictures">
+    <div class="row-fluid" style="text-align: center;">
+      <div class="span12">
+        <h1 class="title-jumbo">Pictures</h1>
+        <p>Gallery our, your, gallery all of which are part of Curiosity, also contribute by posting pictures on Curiosity Rover on Flickr with the tag "Curiosity Rover".</p>
+      </div>
+      <div class="span12">
+        <center>
+        <!--Mostra apenas a ultima foto postada! tamanho maior-->
+        <div class = "pictureBig">
+            <!-- Start of Flickr Badge -->
+            <table id="flickr_badge_uber_wrapper" cellpadding="0" cellspacing="10" border="0">
+                <tr>
+                    <td>
+                        <table cellpadding="0" cellspacing="10" border="0" id="flickr_badge_wrapper">
+                            <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=1&display=latest&size=m&layout=v&source=all_tag&tag=Curiosity+Rover"></script>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <!-- End of Flickr Badge -->
+        </div>
+      </center>
+      <!--As últimas 10 fotos do flickr-->
+        <!-- Start of Flickr Badge -->
+        <style type="text/css">
+        #flickr_badge_source_txt {padding:0; font: 11px Arial, Helvetica, Sans serif; color:#666666;}
+        #flickr_badge_icon {display:block !important; margin:0 !important; border: 1px solid rgb(0, 0, 0) !important;}
+        #flickr_icon_td {padding:0 5px 0 0 !important;}
+        .flickr_badge_image {text-align:center !important;}
+        .flickr_badge_image img {border: 1px solid black !important;}
+        #flickr_www {display:block; padding:0 10px 0 10px !important; font: 11px Arial, Helvetica, Sans serif !important; color:#3993ff !important;}
+        #flickr_badge_uber_wrapper a:hover,
+        #flickr_badge_uber_wrapper a:link,
+        #flickr_badge_uber_wrapper a:active,
+        #flickr_badge_uber_wrapper a:visited {text-decoration:none !important; background:inherit !important;color:#3993ff;}
+        #flickr_badge_wrapper {}
+        #flickr_badge_source {padding:0 !important; font: 11px Arial, Helvetica, Sans serif !important; color:#666666 !important;}
+        </style>
+        <table id="flickr_badge_uber_wrapper" target="_blank" cellpadding="0" cellspacing="10" border="0"><tr><td><a href="http://www.flickr.com/search/?q=Curiosity%20Rover" id="flickr_www" target="_blank">www.<strong style="color:#3993ff">flick<span style="color:#ff1c92">r</span></strong>.com</a><table target="_blank" cellpadding="0" cellspacing="10" border="0" id="flickr_badge_wrapper">
+        <tr>
+        <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=10&display=latest&size=t&layout=h&source=all_tag&tag=Curiosity+Rover"></script>
+        </tr>
+        </table>
+        </td></tr></table>
+        <!-- End of Flickr Badge -->
+     <br class="clear">
+    </div>
+    <div class="span12">
       <ul class="pager">
         <li><a href="#home">↑ Back to Top</a></li>
         <li><a href="#share">Share your Curiosity →</a></li>
       </ul>
     </div>
   </div>
-  </div>
-
+</div>
 <!-- share -->
 <div class="container" id="share">
   <div style="text-align: center;">
     <div class="span12">
     <h1 class="title-jumbo">Share your Curiosity</h1>
-      <p>Feel free to share your curiosity.</p>
+      <p>Share with us, and build experiments on Mars here on Earth, experiencing every discovery we make. Join our online communities and become more of a colonizing Mars.</p>
     </div>
   </div>
   </div>
@@ -88,15 +164,67 @@
       </div>
       <div class="span7">
         <div style="width: 100%; background: url('http://i.imgur.com/ZWtvZzf.png') no-repeat #f4f4f4; padding: 10px 100px; width: 100%; margin-bottom: 0px; height: 83px; box-sizing: border-box; -moz-box-sizing: border-box;"><h3>Share your curiosity</h3></div>
-        <iframe src="http://www.facebook.com/plugins/comments.php?href=http://hello-curiosity.herokuapp.com&amp;num_posts=2&amp;action=comment&amp;scrolling=yes&amp;" style="border:0px #FFFFFF none;" name="My iFrame" scrolling="auto" frameborder="1" marginheight="0px" marginwidth="0px" height="600px" width="100%"></iframe>
+        <div style="height: 600px; overflow: auto;">
+        <iframe src="http://www.facebook.com/plugins/comments.php?href=http://hello-curiosity.herokuapp.com&amp;num_posts=2&amp;action=comment&amp;scrolling=true&amp;scroll=yes" style="border:0px #FFFFFF none;" name="My iFrame" scrolling="auto" frameborder="1" marginheight="0px" marginwidth="0px" height="1600" width="100%"></iframe>
       </div>
     </div>
 
   <script src="http://code.jquery.com/jquery.js"></script>
-   <script type="text/javascript">
+  <script type="text/javascript" src="js/carousel.js"></script>
+  <script type="text/javascript" src="js/lib.js"></script>
+    <script type="text/javascript">
   var json_variable;
 
    $(document).ready(function() {
+      loadTime();
+
+      $('#link-n').click(function(e){
+        $('#my-timeline').html('');
+        loadTimeNasa();
+        $(this).addClass("active");
+        $('#link-c').removeClass("active");
+      });
+
+      $('#link-c').click(function(e){
+        $('#my-timeline').html('');
+        loadTime();
+        $(this).addClass("active");
+        $('#link-n').removeClass("active");
+      });
+
+      $.getJSON('getJSON.php?url=http%3A%2F%2Fmarsweather.ingenology.com%2Fv1%2Flatest%2F', function(json){
+       $("#max").html( "<small style='color: #fff'>max </small>" + json.report.max_temp + "ºC");
+       $("#min").html( "<small style='color: #fff'>min </small>" + json.report.min_temp + "ºC");
+      });
+   });
+
+function loadTime(){
+
+      $.getJSON('getJSON.php?url=http%3A%2F%2Fhello-curiosity.herokuapp.com%2FtimelineC', function(json){
+
+       for (var i = 0; i < json.timeline.news.length; i++) {
+        if(json.timeline.news[i].url) json.timeline.news[i].text += "<br> <a href='"+ json.timeline.news[i].url +"' target='_blank' class='botao-time'>Read more</a>";
+       };
+
+       var jsonstr = JSON.stringify(json);
+
+       var new_jsonstr = jsonstr.replace('"news"', '"date"'); 
+
+       var new_obj = JSON.parse(new_jsonstr);
+       json_variable = new_obj;
+      }).done(function() {
+         createStoryJS({
+            type:       'timeline',
+            width:      '100%',
+            height:     '600',
+            start_zoom_adjust:  '-2',
+            source:     json_variable,
+            embed_id:   'my-timeline'
+        });
+      });
+}
+
+  function loadTimeNasa(){
       $.getJSON('getJSON.php?url=http%3A%2F%2Fhello-curiosity.herokuapp.com%2Ftimeline', function(json){
 
        for (var i = 0; i < json.timeline.news.length; i++) {
@@ -114,16 +242,13 @@
             type:       'timeline',
             width:      '100%',
             height:     '600',
+            start_zoom_adjust:  '6',
+            start_at_slide:     '6', 
             source:     json_variable,
             embed_id:   'my-timeline'
         });
       });
-
-      $.getJSON('getJSON.php?url=http%3A%2F%2Fmarsweather.ingenology.com%2Fv1%2Flatest%2F', function(json){
-       $("#max").html( "<small style='color: #fff'>max </small>" + json.report.max_temp + "ºC");
-       $("#min").html( "<small style='color: #fff'>min </small>" + json.report.min_temp + "ºC");
-      });
-   });
+      }
   </script>
 <script type="text/javascript">
 (function($) {
@@ -296,5 +421,27 @@ setInterval( update, countdown.earth.update().sign == '-' ? 1000 : 1028 );
   .vco-storyjs .vco-feature h1,.vco-storyjs .vco-feature h2,.vco-storyjs .vco-feature h3,.vco-storyjs .vco-feature h4,.vco-storyjs .vco-feature h5,.vco-storyjs .vco-feature h6{font-family:'Lato',sans-serif;font-weight:900;}
   .timeline-tooltip{font-family:'Lato',sans-serif;}
   </style>
+</div>
+<div class = "row">
+  <footer id="footer">
+    <div id="challenge-information" class="clearfix">
+      <a href="http://www.nasa.gov"><img class="logo nasa" data-cfsrc="http://spaceappschallenge.org//static/images/nasa.png" alt="NASA" src="http://spaceappschallenge.org//static/images/nasa.png"></a>
+      <a href="http://spaceappschallenge.org/" target="_blank"><img class="logo spaceapps" src="http://spaceappschallenge.org/static/images/spaceappschallenge-125x129.png" title="Space Apps Challenge"></a>
+      <div class="team">
+        <p>
+          Challenge: <a href="http://spaceappschallenge.org/challenge/curiosity-at-home/">Curiosity At Home</a>
+        </p>
+        <p>
+          Team: Glauber Magalhães, Silas Monteiro, Joselito Junior, Fernando Alves e Gustavo Pinto
+        </p>
+        <p>
+          Github: <a href="https://github.com/gustavopinto/hello-curiosity">https://github.com/gustavopinto/hello-curiosity</a>
+        </p>
+        <p>
+          License: <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.pt_BR"><img alt="Licença Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" /></a>
+        </p>
+      <div>
+    </div>
+  </footer>
 </body>
 </html>

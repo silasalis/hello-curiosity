@@ -28,6 +28,10 @@ public class IndexController {
 		this.twitterNews = twitterNews;
 	}
 
+	public static void main(String ags[]) {
+		
+	}
+	
 	@Get("/")
 	public void index() {
 	}
